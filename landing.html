@@ -35,7 +35,7 @@
             // HACK: Wait for the gif to be loaded and for the frames to be initialized within <x-gif>:
             setTimeout(function(){
               var frames = gif.controller.playback.element.querySelectorAll('.frame');
-              frameLength = frames.length;
+              frameLength = frames.length < 20 ? frames.length : 20;
               for(var i = 0; i < frameLength; i++) {
                 gifs[i] = document.createElement('x-gif');
                 gifs[i].setAttribute('src',gif_url);
@@ -44,6 +44,7 @@
               for(var i = 0; i < frameLength; i++) {
                 var divNode = document.createElement('div');
                 divNode.className = "col";
+                divNode.setAttribute("data-order", i);
                 grid.appendChild(divNode);
               }
             }, 3000);
