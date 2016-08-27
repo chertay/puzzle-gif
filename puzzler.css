@@ -31,6 +31,7 @@ body {
 .flex-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .flex-grid .col {
