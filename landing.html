@@ -20,6 +20,7 @@
       <div id="g" class="col"></div>
       <div id="h" class="col"></div>
       <div id="i" class="col"></div>
+      <div id="j" class="col"></div>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
@@ -30,15 +31,27 @@
 
         (function(){
 
-            var gif = document.createElement('x-gif');
-            gif.setAttribute('src','http://i.giphy.com/OAXZlshfij9gk.gif');
+              var gif = document.createElement('x-gif');
+              gif.setAttribute('src','http://i.giphy.com/OAXZlshfij9gk.gif');
+
+            var gifs = [];
+            for(var i = 0; i < 10; i++) {
+              gifs[i] = gif.cloneNode();
+            }
+
             var sortables = document.querySelectorAll('.col');
 
             // HACK: Wait for the gif to be loaded and for the frames to be initialized within <x-gif>:
             setTimeout(function(){
-                var frames = gif.controller.playback.element.querySelectorAll('.frame');
+                var images = [];
+                for ( var i = 0; i < 10; i++) {
+                  images[i] = gifs[i].controller.playback.element.querySelectorAll('.frame');
+                }
                 Object.keys(sortables).forEach(function(sq,i){
-                    sortables[sq].appendChild(frames[i]);
+                    sortables[sq].appendChild(gifs[9-i]);
+                    for ( var y = i; y > 0; y--) {
+                      gifs[i].controller.playback.element.removeChild(images[i][y]);
+                    }
                 });
             }, 3000);
 
