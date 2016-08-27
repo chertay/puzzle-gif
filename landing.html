@@ -18,11 +18,7 @@
 
         $(document).ready(ddInit());
 
-        var setUpPage = function(giphy_api_result) {
-            // Pull an image URL out of the Giphy API response JSON
-            console.log("Giphy API result:");
-            console.log(giphy_api_result)
-            var gif_url = giphy_api_result['data']['image_url'];
+        var setUpPage = function(gif_url) {
 
             // Create x-gif tag
             var gif = document.createElement('x-gif');
@@ -67,9 +63,21 @@
             }, 5000);
         }
 
-        // Hit the Giphy API and call setUpPage() with the result
-        $.ajax({url: "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC",
-                success: setUpPage});
+        var giphy_id = window.location.search.substring(4);
+        if (giphy_id) {
+          gif_url = "http://media3.giphy.com/media/" + giphy_id + "/giphy.gif"
+          setUpPage(gif_url)
+        } else {
+          // Hit the Giphy API and call setUpPage() with the result
+          $.ajax({url: "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC",
+                  success: function(result){
+                    gif_url = result['data']['image_url'];
+                    gif_id = result['data']['id'];
+                    console.log("To see this GIF again, visit:");
+                    console.log(window.location + "?id=" + gif_id);
+                    setUpPage(gif_url);
+                  }});
+        }
 
     </script>
   </body>
