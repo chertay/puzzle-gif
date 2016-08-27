@@ -1,0 +1,32 @@
+
+.flex-grid-thirds {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-grid-thirds .col {
+  width: 32%;
+}
+
+@media (max-width: 400px) {
+  .flex-grid-third {
+    display: block;
+    .col {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+}
+
+.col {
+  background: blue;
+  padding: 20px;
+}
