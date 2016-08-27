@@ -34,26 +34,31 @@
               var gif = document.createElement('x-gif');
               gif.setAttribute('src','http://i.giphy.com/OAXZlshfij9gk.gif');
 
-            var gifs = [];
-            for(var i = 0; i < 10; i++) {
-              gifs[i] = gif.cloneNode();
-            }
-
-            var sortables = document.querySelectorAll('.col');
+              var gifs = [];
+              var frameLength = 0;
+              var sortables = document.querySelectorAll('.col');
 
             // HACK: Wait for the gif to be loaded and for the frames to be initialized within <x-gif>:
             setTimeout(function(){
-                var images = [];
-                for ( var i = 0; i < 10; i++) {
-                  images[i] = gifs[i].controller.playback.element.querySelectorAll('.frame');
-                }
-                Object.keys(sortables).forEach(function(sq,i){
-                    sortables[sq].appendChild(gifs[9-i]);
-                    for ( var y = i; y > 0; y--) {
-                      gifs[i].controller.playback.element.removeChild(images[i][y]);
-                    }
-                });
+              var frames = gif.controller.playback.element.querySelectorAll('.frame');
+              frameLength = 10;
+              for(var i = 0; i < frameLength; i++) {
+                gifs[i] = document.createElement('x-gif');
+                gifs[i].setAttribute('src','http://i.giphy.com/OAXZlshfij9gk.gif');
+              }
             }, 3000);
+            setTimeout(function() {
+              var images = [];
+              for ( var i = 0; i < frameLength; i++) {
+                  images[i] = gifs[i].controller.playback.element.querySelectorAll('.frame');
+              }
+              Object.keys(sortables).forEach(function(sq,i){
+                  sortables[sq].appendChild(gifs[frameLength - 1 -i]);
+                  for ( var y = i; y > 0; y--) {
+                    gifs[i].controller.playback.element.removeChild(images[i][y]);
+                  } 
+              });
+            }, 5000);
 
         })();
 
