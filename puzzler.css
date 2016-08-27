@@ -15,14 +15,17 @@ body {
 }
 
 .col {
-  background: #492c21;
+  background: #fff;
   color: #000000;
   padding: 50px;
   margin: 1px;
   display: flex;
-  width: 32%;
-  height: 50px;
   box-shadow: 5px 10px 10px 5px #808000;
+}
+
+.col > img {
+    height: 200px;
+    width: 200px;
 }
 
 .flex-grid {
