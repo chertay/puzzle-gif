@@ -8,20 +8,34 @@ body {
 
 .col {
   background: blue;
-  padding: 20px;
+  padding: 50px;
+  margin: 1px;
+  display: flex;
+  width: 32%;
+  height: 50px;
 }
 
 .flex-grid {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .flex-grid .col {
   flex: 1
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
-.flex-grid {
-  margin: 10px 10px 10px 10px;
-}
+.flex-grid > *{margin: 1px 1px;}
 
-.flex-grid > *{margin: 0 10px;}
+/*@media (max-width: 400px) {
+  .flex-grid,
+  .flex-grid-thirds {
+    display: block;
+    .col {
+      width: 100%;
+      margin: 0 0 10px 0;
+      display: flex;
+    }
+  }
+}*/
