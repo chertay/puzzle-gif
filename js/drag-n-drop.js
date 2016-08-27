@@ -33,35 +33,42 @@ function ddInit(){
    //   alert('clicked');
    */
    
-   function didYouWin(domOrder){
-      alert('dropped');
-      var sortedResults = [];
-      //$('.col').each(function() {
-      //   results.push($(this).attr('id'));
-      //})
-      sortedResults = domOrder.slice();
-      sortedResults.getSorted('.col', 'data-order');
-      alert(domOrder.toString() + ' =? ' + sortedResults.toString());
-      if (domOrder.toString() === sortedResults.toString()) {
-         alert('You win');
-      } else {
-         alert('You lose, you shitty player');
-      }
-   }
-   
-   function getSorted(selector, attrName) {
-    return $($(selector).toArray().sort(function(a, b){
+   /*function getSorted(selector, attrName) {
+    var items = $($(selector).toArray().sort(function(a, b){
         var aVal = parseInt(a.getAttribute(attrName)),
             bVal = parseInt(b.getAttribute(attrName));
         return aVal - bVal;
     }));
-}
+    return $items
+   }*/
+   function sortNumber(a,b) {
+    return a - b;
+   }
+
+   
+   function didYouWin(){
+      var items = [];
+      var sortedItems = [];
+      $('.col').each(function(){
+         //alert($(this).prop('outerHTML'));
+         items.push(Number($(this).attr('data-order')));
+      });
+      sortedItems = items.slice().sort(sortNumber);
+      alert(items.toString() + '?=' + sortedItems.toString());
+      if (items.toString() === sortedItems.toString()){
+         alert('You win');
+      } else {
+         //alert('Shitty loser');
+      }
+   }
+   
+   
    
    $('.flex-grid').sortable({
      stop: function(event, ui) {
          var order = $('.flex-grid').sortable('toArray');
          console.log('new order:', order);
-         didYouWin(order);
+         didYouWin();
      }
    });
 
