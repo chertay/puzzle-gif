@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+}
+
+.col {
+  background: blue;
+  padding: 50px;
+  margin: 1px;
+  display: flex;
+  width: 32%;
+  height: 50px;
+}
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-grid .col {
+  flex: 1
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.flex-grid > *{margin: 1px 1px;}
+
+/*@media (max-width: 400px) {
+  .flex-grid,
+  .flex-grid-thirds {
+    display: block;
+    .col {
+      width: 100%;
+      margin: 0 0 10px 0;
+      display: flex;
+    }
+  }
+}*/
