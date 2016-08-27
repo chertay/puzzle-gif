@@ -27,7 +27,7 @@
 
             // Create x-gif tag
             var gif = document.createElement('x-gif');
-            gif.setAttribute('src', 'http://i.giphy.com/OAXZlshfij9gk.gif');
+            gif.setAttribute('src', gif_url);
 
               var gifs = [];
               var frameLength = 0;
@@ -35,10 +35,10 @@
             // HACK: Wait for the gif to be loaded and for the frames to be initialized within <x-gif>:
             setTimeout(function(){
               var frames = gif.controller.playback.element.querySelectorAll('.frame');
-              frameLength = 10;
+              frameLength = frames.length;
               for(var i = 0; i < frameLength; i++) {
                 gifs[i] = document.createElement('x-gif');
-                gifs[i].setAttribute('src','http://i.giphy.com/OAXZlshfij9gk.gif');
+                gifs[i].setAttribute('src',gif_url);
               }
               var grid = document.querySelectorAll(".flex-grid")[0];
               for(var i = 0; i < frameLength; i++) {
