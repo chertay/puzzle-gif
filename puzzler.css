@@ -1,6 +1,8 @@
 h1 {
   font-family: "Comic sans MS";
   text-align: center;
+  color: #808000;
+  text-shadow: 10px 5px #ffdb58;
 }
 * {
   box-sizing: border-box;
@@ -8,17 +10,19 @@ h1 {
 
 body {
   padding: 20px;
-  background-color: #9f8170;
+  background-image: url("/toilet3.jpg");
   margin: auto;
 }
 
 .col {
-  background: blue;
+  background: #492c21;
+  color: #000000;
   padding: 50px;
   margin: 1px;
   display: flex;
   width: 32%;
   height: 50px;
+  box-shadow: 5px 10px 10px 5px #808000;
 }
 
 .flex-grid {
