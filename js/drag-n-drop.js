@@ -33,7 +33,11 @@ function ddInit(){
    //   alert('clicked');
    */
    $('.flex-grid').sortable({
-     stop: function(event, ui) {alert('You dropped a shitty frame!');}
+     stop: function(event, ui) {
+         alert('You dropped a shitty frame!');
+         var order = $('.flex-grid').sortable('toArray');
+         console.log('new order:', order);
+     }
    });
 
 }

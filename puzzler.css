@@ -17,7 +17,7 @@ body {
 .col {
   background: #fff;
   color: #000000;
-  padding: 50px;
+  padding: 10px;
   margin: 1px;
   display: flex;
   box-shadow: 5px 10px 10px 5px #808000;
@@ -31,7 +31,6 @@ body {
 .flex-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .flex-grid .col {
