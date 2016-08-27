@@ -32,6 +32,6 @@ function ddInit(){
    //$('.col').off().on('click', function(){
    //   alert('clicked');
    */
-   $('.flex-grid').sortable();
+   $('.flex-grid').sortable(); 
 }
    
