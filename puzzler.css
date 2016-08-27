@@ -1,3 +1,5 @@
+---
+---
 h1 {
   font-family: "Comic sans MS";
   text-align: center;
@@ -10,7 +12,7 @@ h1 {
 
 body {
   padding: 20px;
-  background-image: url("/s/toilet3.jpg");
+  background-image: url({{ '/s/toilet3.jpg' | prepend: site.baseurl }});
   margin: auto;
 }
 
