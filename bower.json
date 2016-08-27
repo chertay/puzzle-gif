@@ -1,0 +1,20 @@
+{
+  "name": "puzzle-gif",
+  "homepage": "https://kriscooke.github.io/puzzle-gif",
+  "authors": [
+    "Kristen Cooke <kristen@3ptscience.com>"
+  ],
+  "description": "Awesome gif puzzle game",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+      "x-gif": "https://github.com/kriscooke/x-gif.git#update-deps"
+  }
+}
