@@ -44,6 +44,7 @@
               for(var i = 0; i < frameLength; i++) {
                 var divNode = document.createElement('div');
                 divNode.className = "col";
+                divNode.setAttribute("data-order", i);
                 grid.appendChild(divNode);
               }
             }, 3000);
