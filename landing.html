@@ -29,10 +29,15 @@
 
         $(document).ready(ddInit());
 
-        (function(){
+        var setUpPage = function(giphy_api_result) {
+            // Pull an image URL out of the Giphy API response JSON
+            console.log("Giphy API result:");
+            console.log(giphy_api_result)
+            var gif_url = giphy_api_result['data']['image_url'];
 
-              var gif = document.createElement('x-gif');
-              gif.setAttribute('src','http://i.giphy.com/OAXZlshfij9gk.gif');
+            // Create x-gif tag
+            var gif = document.createElement('x-gif');
+            gif.setAttribute('src', gif_url);
 
             var gifs = [];
             for(var i = 0; i < 10; i++) {
@@ -54,8 +59,11 @@
                     }
                 });
             }, 3000);
+        }
 
-        })();
+        // Hit the Giphy API and call setUpPage() with the result
+        $.ajax({url: "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC",
+                success: setUpPage});
 
     </script>
   </body>
