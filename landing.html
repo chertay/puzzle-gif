@@ -53,6 +53,10 @@
               var images = [];
               for ( var i = 0; i < frameLength; i++) {
                   images[i] = gifs[i].controller.playback.element.querySelectorAll('.frame');
+                  Object.keys(images[i]).forEach(function(j) {
+                    images[i][j].height = 100;
+                    images[i][j].width = 100;
+                  });
               }
               Object.keys(sortables).forEach(function(sq,i){
                   sortables[sq].appendChild(gifs[frameLength - 1 -i]);
