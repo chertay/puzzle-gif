@@ -52,11 +52,12 @@ body {
 }
 
 #another {
-    height: 40px;
+    /*height: 40px;*/
     border-radius: 3px;
     margin: 0 auto 20px auto;
     display: block;
-    font-size: 16px;
+    font-size: 1em;
+    line-height: 2em;
     background-color: turquoise;
     outline: none;
 }
