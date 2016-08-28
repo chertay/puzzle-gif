@@ -23,6 +23,7 @@ body {
   margin: 1px;
   display: flex;
   box-shadow: 5px 10px 10px 5px #808000;
+  cursor: pointer;
 }
 
 .col > img {
@@ -48,4 +49,14 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+#another {
+    height: 40px;
+    border-radius: 3px;
+    margin: 0 auto 20px auto;
+    display: block;
+    font-size: 16px;
+    background-color: turquoise;
+    outline: none;
 }
