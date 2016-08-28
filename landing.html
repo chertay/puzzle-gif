@@ -72,7 +72,9 @@
           $.ajax({
             url: "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC",
             success: function(result){
-              gif_url = result['data']['image_url'];
+              console.log("Giphy API response:");
+              console.log(result);
+              gif_url = result['data']['image_url'].replace('http://', 'https://');
               gif_id = result['data']['id'];
               console.log("To see this GIF again, visit:");
               console.log(window.location + "?id=" + gif_id);
