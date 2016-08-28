@@ -32,11 +32,43 @@ function ddInit(){
    //$('.col').off().on('click', function(){
    //   alert('clicked');
    */
+   
+   /*function getSorted(selector, attrName) {
+    var items = $($(selector).toArray().sort(function(a, b){
+        var aVal = parseInt(a.getAttribute(attrName)),
+            bVal = parseInt(b.getAttribute(attrName));
+        return aVal - bVal;
+    }));
+    return $items
+   }*/
+   function sortNumber(a,b) {
+    return a - b;
+   }
+
+   
+   function didYouWin(){
+      var items = [];
+      var sortedItems = [];
+      $('.col').each(function(){
+         //alert($(this).prop('outerHTML'));
+         items.push(Number($(this).attr('data-order')));
+      });
+      sortedItems = items.slice().sort(sortNumber);
+      //alert(items.toString() + '?=' + sortedItems.toString());
+      if (items.toString() === sortedItems.toString()){
+         alert('You win');
+      } else {
+         //alert('Shitty loser');
+      }
+   }
+   
+   
+   
    $('.flex-grid').sortable({
      stop: function(event, ui) {
-         alert('You dropped a shitty frame!');
          var order = $('.flex-grid').sortable('toArray');
          console.log('new order:', order);
+         didYouWin();
      }
    });
 
