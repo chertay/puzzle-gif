@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <title>Gif Puzzler</title>
-    <link rel="stylesheet" type="text/css" href="puzzler.css" />
+    <link rel="stylesheet" type="text/css" href="{{ '/puzzler.css' | prepend: site.baseurl }}" />
   </head>
   <body>
-    <embed src="/s/fart.mp3" autostart="true" loop="true"
+    <embed src="{{ '/s/fart.mp3' | prepend: site.baseurl }}" autostart="true" loop="true"
     width="1" height="1">
     </embed>
     <h1>Warned you!</h1>
