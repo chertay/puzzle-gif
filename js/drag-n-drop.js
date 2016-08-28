@@ -54,7 +54,7 @@ function ddInit(){
          items.push(Number($(this).attr('data-order')));
       });
       sortedItems = items.slice().sort(sortNumber);
-      alert(items.toString() + '?=' + sortedItems.toString());
+      //alert(items.toString() + '?=' + sortedItems.toString());
       if (items.toString() === sortedItems.toString()){
          alert('You win');
       } else {
