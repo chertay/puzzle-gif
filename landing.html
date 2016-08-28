@@ -18,6 +18,24 @@
     <script src="{{ '/js/drag-n-drop.js' | prepend: site.baseurl}}" type="text/javascript"></script>
     <script type="text/javascript">
 
+(function($) {
+  
+  $.fn.randomize = function(tree, childElem) {
+    return this.each(function() {
+      var $this = $(this);
+      if (tree) $this = $(this).find(tree);
+      var unsortedElems = $this.children(childElem);
+      var elems = unsortedElems.clone();
+      
+      elems.sort(function() { return (Math.round(Math.random())-0.5); });  
+
+      for(var i=0; i < elems.length; i++)
+        unsortedElems.eq(i).replaceWith(elems[i]);
+    });    
+  };
+
+})(jQuery);
+
         $(document).ready(ddInit());
 
         var setUpPage = function(gif_url) {
@@ -52,8 +70,8 @@
               for ( var i = 0; i < frameLength; i++) {
                   images[i] = gifs[i].controller.playback.element.querySelectorAll('.frame');
                   Object.keys(images[i]).forEach(function(j) {
-                    images[i][j].height = 100;
-                    images[i][j].width = 100;
+                    images[i][j].height = 150;
+                    images[i][j].width = 150;
                   });
               }
               Object.keys(sortables).forEach(function(sq,i){
@@ -62,8 +80,11 @@
                     gifs[i].controller.playback.element.removeChild(images[i][y]);
                   }
               });
+              //$('.flex-grid').randomize(".col");
             }, 5000);
         }
+
+
 
         var giphy_id = window.location.search.substring(4);
         if (giphy_id) {
