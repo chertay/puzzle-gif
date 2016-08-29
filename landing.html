@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <title>Gif Puzzler</title>
     <script>
-        var oembedUrl = '{{ site.oembed_server | append: '?url=' | append: site.domain | append: site.baseurl | append: page.url }}';
+        var oembedUrl = '{{ site.oembed_server | append: "?url=" }}' + encodeURIComponent(window.location.href);
         if(window.location.search){
-            oembedUrl += ('&id=' + window.location.search.substring(4));
+            oembedUrl += ('&id=' + encodeURIComponent(window.location.search.substring(4)));
         }
         document.write('<link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="'+ oembedUrl +'"/>');
         document.close();
