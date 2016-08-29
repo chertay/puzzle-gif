@@ -4,7 +4,7 @@
 <html lang= "en">
   <head>
     <meta charset="utf-8">
-    <link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="{{ site.oembed_server | append: '?url=' | append: site.baseurl | append: page.url }}"/>
+    <link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="{{ site.oembed_server | append: '?url=' | append: site.domain | append: site.baseurl | append: page.url }}"/>
     <title>Gif Puzzler</title>
     <link rel="stylesheet" type="text/css" href="{{ '/puzzler.css' | prepend: site.baseurl }}" />
   </head>
