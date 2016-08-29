@@ -42,7 +42,7 @@
 
         $('#another').on('click touchstart', function tryAgain(){
             // $('.flex-grid').empty();
-            getRandomGif(true);
+            getRandomGif();
         });
 
         var setUpPage = function(gif_url, gif_id) {
@@ -90,7 +90,7 @@
             }, 5000);
         }
 
-        function getRandomGif(reload){
+        function getRandomGif(){
             // Hit the Giphy API and call setUpPage() with the result
             $.ajax({
               url: "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC",
@@ -101,8 +101,7 @@
                 var gif_id = result['data']['id'];
                 console.log("To see this GIF again, visit:");
                 console.log(window.location + "?id=" + gif_id);
-                // setUpPage(gif_url, gif_id);
-                if(reload){ window.location.search = 'id=' + encodeURIComponent(gif_id) }
+                window.location.search = 'id=' + encodeURIComponent(gif_id);
               }});
         }
 
