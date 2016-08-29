@@ -20,28 +20,9 @@
     <script src="{{ '/js/drag-n-drop.js' | prepend: site.baseurl}}" type="text/javascript"></script>
     <script type="text/javascript">
 
-(function($) {
-
-  $.fn.randomize = function(tree, childElem) {
-    return this.each(function() {
-      var $this = $(this);
-      if (tree) $this = $(this).find(tree);
-      var unsortedElems = $this.children(childElem);
-      var elems = unsortedElems.clone();
-
-      elems.sort(function() { return (Math.round(Math.random())-0.5); });
-
-      for(var i=0; i < elems.length; i++)
-        unsortedElems.eq(i).replaceWith(elems[i]);
-    });
-  };
-
-})(jQuery);
-
         $(document).ready(ddInit());
 
         $('#another').on('click touchstart', function tryAgain(){
-            // $('.flex-grid').empty();
             getRandomGif();
         });
 
@@ -52,6 +33,7 @@
 
               var gifs = [];
               var frameLength = 0;
+              var randomOrder;
 
             // HACK: Wait for the gif to be loaded and for the frames to be initialized within <x-gif>:
             setTimeout(function(){
@@ -61,11 +43,13 @@
                 gifs[i] = document.createElement('x-gif');
                 gifs[i].setAttribute('src',gif_url);
               }
+              randomOrder = gifs.map(function(item,i){ return i }).sort(function(){ return (Math.round(Math.random())-0.5) });
+
               var grid = document.querySelectorAll(".flex-grid")[0];
               for(var i = 0; i < frameLength; i++) {
                 var divNode = document.createElement('div');
                 divNode.className = "col";
-                divNode.setAttribute("data-order", i);
+                divNode.setAttribute("data-order", randomOrder[i]);
                 grid.appendChild(divNode);
               }
             }, 3000);
@@ -73,6 +57,7 @@
             setTimeout(function() {
               var sortables = document.querySelectorAll('.col');
               var images = [];
+
               for ( var i = 0; i < frameLength; i++) {
                   images[i] = gifs[i].controller.playback.element.querySelectorAll('.frame');
                   Object.keys(images[i]).forEach(function(j) {
@@ -81,12 +66,11 @@
                   });
               }
               Object.keys(sortables).forEach(function(sq,i){
-                  sortables[sq].appendChild(gifs[frameLength - 1 -i]);
+                  sortables[sq].appendChild(gifs[frameLength - 1 - randomOrder[i]]);
                   for ( var y = i; y > 0; y--) {
                     gifs[i].controller.playback.element.removeChild(images[i][y]);
                   }
               });
-              //$('.flex-grid').randomize(".col");
             }, 5000);
         }
 
