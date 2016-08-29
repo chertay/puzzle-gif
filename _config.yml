@@ -1,4 +1,4 @@
 domain: "https://kriscooke.github.io"
 baseurl: "/puzzle-gif" # the subpath of your site, e.g. /blog
 include: [s]
-oembed_server: "https://giphy-link-previews-iqhyzuqarq.now.sh/oembed/"
+oembed_server: "https://giphy-link-previews-rqttsvyjno.now.sh/oembed/"
