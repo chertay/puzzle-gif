@@ -5,7 +5,14 @@
   <head>
     <meta charset="utf-8">
     <title>Gif Puzzler</title>
-    <link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="{{ site.oembed_server | append: '?url=' | append: site.domain | append: site.baseurl | append: page.url }}"/>
+    <script>
+        var oembedUrl = '{{ site.oembed_server | append: '?url=' | append: site.domain | append: site.baseurl | append: page.url }}';
+        if(window.location.search){
+            oembedUrl += ('&id=' + window.location.search.substring(4));
+        }
+        document.write('<link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="'+ oembedUrl +'"/>');
+        document.close();
+    </script>
     <link rel="stylesheet" type="text/css" href="{{ '/puzzler.css' | prepend: site.baseurl }}" />
     <link rel="import" href="{{ '/s/x-gif.html' | prepend: site.baseurl }}">
   </head>
@@ -41,12 +48,11 @@
         $(document).ready(ddInit());
 
         $('#another').on('click touchstart', function tryAgain(){
-            $('.flex-grid').empty();
-            getRandomGif();
+            // $('.flex-grid').empty();
+            getRandomGif(true);
         });
 
         var setUpPage = function(gif_url, gif_id) {
-            window.location.hash = window.location.hash ? window.location.hash.substring(1) : gif_id;
             // Create x-gif tag
             var gif = document.createElement('x-gif');
             gif.setAttribute('src', gif_url);
@@ -91,7 +97,7 @@
             }, 5000);
         }
 
-        function getRandomGif(){
+        function getRandomGif(reload){
             // Hit the Giphy API and call setUpPage() with the result
             $.ajax({
               url: "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC",
@@ -101,14 +107,15 @@
                 var gif_url = result['data']['image_url'].replace('http://', 'https://');
                 var gif_id = result['data']['id'];
                 console.log("To see this GIF again, visit:");
-                console.log(window.location + "#" + gif_id);
-                setUpPage(gif_url, gif_id);
+                console.log(window.location + "?id=" + gif_id);
+                // setUpPage(gif_url, gif_id);
+                if(reload){ window.location.search = 'id=' + encodeURIComponent(gif_id) }
               }});
         }
 
-        var giphy_id = window.location.hash.substring(1);
+        var giphy_id = window.location.search.substring(4);
         if (giphy_id) {
-          var gif_url = "https://media3.giphy.com/media/" + giphy_id + "/giphy.gif"
+          var gif_url = "https://media3.giphy.com/media/" + encodeURIComponent(giphy_id) + "/giphy.gif"
           setUpPage(gif_url, giphy_id)
         } else {
             getRandomGif();
