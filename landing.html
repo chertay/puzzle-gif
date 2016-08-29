@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <title>Gif Puzzler</title>
-    <link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="{{ '/s/oembed.json?url=https%3A%2F%2Fkriscooke.github.io%2Fpuzzle-gif%2Flanding' | prepend: site.baseurl }}"/>
+    <link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="{{ site.oembed_server | append: '?url=' | append: site.baseurl | append: page.url }}"/>
     <link rel="stylesheet" type="text/css" href="{{ '/puzzler.css' | prepend: site.baseurl }}" />
     <link rel="import" href="{{ '/s/x-gif.html' | prepend: site.baseurl }}">
   </head>
