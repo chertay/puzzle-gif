@@ -9,7 +9,7 @@
     // Since the page will be immediately reloaded if no query params present, don't
     // send the pageview until then:
 
-    if(window.location.search){
+    if(window.location.search && window.location.hostname !== 'localhost'){
         ga('create', '{{ site.google_analytics_id }}', 'auto');
         ga('send', 'pageview');
     }
