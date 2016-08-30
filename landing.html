@@ -1,84 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang= "en">
   <head>
     <meta charset="utf-8">
+    <link rel="alternate" type="application/json+oembed" title="GIF Puzzle" href="{{ site.oembed_server | append: '?url=' | append: site.domain | append: site.baseurl | append: page.url }}"/>
     <title>Gif Puzzler</title>
-    <link rel="stylesheet" type="text/css" href="/puzzler.css" />
-    <link rel="import" href="/s/x-gif/dist/x-gif.html"/>
+    <link rel="stylesheet" type="text/css" href="{{ '/puzzler.css' | prepend: site.baseurl }}" />
   </head>
   <body>
-    <!-- <x-gif src="http://i.imgur.com/RY2vTBQ.gif"></x-gif> -->
     <h1>Shitty Game of Gifs</h1>
-    <div class ="flex-grid">
-    </div>
-    <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" type="text/javascript"></script>
-    <script src="js/drag-n-drop.js" type="text/javascript"></script>
-    <script type="text/javascript">
-
-        $(document).ready(ddInit());
-
-        var setUpPage = function(gif_url) {
-
-            // Create x-gif tag
-            var gif = document.createElement('x-gif');
-            gif.setAttribute('src', gif_url);
-
-              var gifs = [];
-              var frameLength = 0;
-
-            // HACK: Wait for the gif to be loaded and for the frames to be initialized within <x-gif>:
-            setTimeout(function(){
-              var frames = gif.controller.playback.element.querySelectorAll('.frame');
-              frameLength = frames.length < 20 ? frames.length : 20;
-              for(var i = 0; i < frameLength; i++) {
-                gifs[i] = document.createElement('x-gif');
-                gifs[i].setAttribute('src',gif_url);
-              }
-              var grid = document.querySelectorAll(".flex-grid")[0];
-              for(var i = 0; i < frameLength; i++) {
-                var divNode = document.createElement('div');
-                divNode.className = "col";
-                divNode.setAttribute("data-order", i);
-                grid.appendChild(divNode);
-              }
-            }, 3000);
-            
-            setTimeout(function() {
-              var sortables = document.querySelectorAll('.col');
-              var images = [];
-              for ( var i = 0; i < frameLength; i++) {
-                  images[i] = gifs[i].controller.playback.element.querySelectorAll('.frame');
-                  Object.keys(images[i]).forEach(function(j) {
-                    images[i][j].height = 100;
-                    images[i][j].width = 100;
-                  });
-              }
-              Object.keys(sortables).forEach(function(sq,i){
-                  sortables[sq].appendChild(gifs[frameLength - 1 -i]);
-                  for ( var y = i; y > 0; y--) {
-                    gifs[i].controller.playback.element.removeChild(images[i][y]);
-                  }
-              });
-            }, 5000);
-        }
-
-        var giphy_id = window.location.search.substring(4);
-        if (giphy_id) {
-          gif_url = "http://media3.giphy.com/media/" + giphy_id + "/giphy.gif"
-          setUpPage(gif_url)
-        } else {
-          // Hit the Giphy API and call setUpPage() with the result
-          $.ajax({url: "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC",
-                  success: function(result){
-                    gif_url = result['data']['image_url'];
-                    gif_id = result['data']['id'];
-                    console.log("To see this GIF again, visit:");
-                    console.log(window.location + "?id=" + gif_id);
-                    setUpPage(gif_url);
-                  }});
-        }
-
-    </script>
+      <div class="toilet">
+        <div>
+          <iframe src="https://giphy.com/embed/3o72F6nIZRlfn5V8B2" width="480" height="246" frameBorder="0"  allowFullScreen></iframe>
+        </div>
+        <div>
+        <button><a href="{{ '/' | prepend: site.baseurl }}">START</a></button>
+        <!-- completely pointless button, was a bit bored for a few moments - Cort -->
+        <button><a href="{{ '/hehe' | prepend: site.baseurl }}">SHITTY</a></button>
+        </div>
+      </div>
   </body>
 </html>

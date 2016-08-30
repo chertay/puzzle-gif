@@ -1,2 +1,5 @@
+domain: "https://kriscooke.github.io"
 baseurl: "/puzzle-gif" # the subpath of your site, e.g. /blog
-include: [s]
+exclude: [Makefile, Gemfile, Gemfile.lock, README.md, bower.json, bower_components]
+oembed_server: "https://giphy-link-previews-rqttsvyjno.now.sh/oembed/"
+google_analytics_id: "UA-83290708-1"
