@@ -6,7 +6,7 @@
  3. `bower install`
  3. `bundle exec jekyll serve` to serve
 
-You should then be able to preview it locally at `http://localhost:4000`
+You should then be able to preview it locally at `http://localhost:4000/puzzle-gif/` (important to include the trailing slash).
 
 Alternatively, on OSX:
 
