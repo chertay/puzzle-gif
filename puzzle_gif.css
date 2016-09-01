@@ -1,0 +1,84 @@
+---
+---
+body {
+  background-image: url("s/background.jpg");
+  font-family: 'Comic Sans MS', sans-serif;
+}
+
+header {
+  padding: 10px;
+}
+
+header h1 {
+  text-shadow: 2px 2px #ffffff;
+  text-align: left;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+}
+
+footer {
+  text-shadow: 2px 2px #ffffff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.jumbotron {
+  display: flex;
+  background-size: cover;
+  background-color: #d3d3d3;
+}
+
+.btn.btn-primary {
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  border-radius: 50%;
+  border-color: #000000;
+  color: #000000;
+  background-color: #ffffff;
+  -webkit-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+	-moz-transition: all .25s ease-in-out;
+	transition: all .25s ease-in-out;
+}
+
+.btn.btn-primary:hover {
+  color: #ffffff;
+  background-color: #6e7f80;
+  -webkit-transition: all .25s ease-in-out;
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+.col {
+  background: #ffffe0;
+  padding: 5px;
+  display: flex;
+  box-shadow: 2px 5px 5px 2px #a9a9a9;
+  cursor: pointer;
+}
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-grid .col {
+  display: flex;
+  flex: 1
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.flex-grid > *{
+  margin: 4px 4px;
+}
