@@ -32,7 +32,7 @@ function ddInit(){
    //$('.col').off().on('click', function(){
    //   alert('clicked');
    */
-   
+
    /*function getSorted(selector, attrName) {
     var items = $($(selector).toArray().sort(function(a, b){
         var aVal = parseInt(a.getAttribute(attrName)),
@@ -45,8 +45,11 @@ function ddInit(){
     return a - b;
    }
 
-   
+   var attempts = 0;
+
    function didYouWin(){
+      attempts ++;
+
       var items = [];
       var sortedItems = [];
       $('.col').each(function(){
@@ -56,14 +59,30 @@ function ddInit(){
       sortedItems = items.slice().sort(sortNumber);
       //alert(items.toString() + '?=' + sortedItems.toString());
       if (items.toString() === sortedItems.toString()){
-         alert('You win');
-      } else {
-         //alert('Shitty loser');
+        if(ga){
+          ga('send', {
+            hitType: 'event',
+            eventCategory: 'GameEngagement',
+            eventAction: 'GameOutcome',
+            eventLabel: 'win'
+          });
+        }
+        alert('You win');
+      }
+      if(attempts > 0 && attempts % 2 === 0){
+        if(ga){
+          ga('send', {
+            hitType: 'event',
+            eventCategory: 'GameEngagement',
+            eventAction: 'GameAttempts',
+            value: attempts
+          });
+        }
       }
    }
-   
-   
-   
+
+
+
    $('.flex-grid').sortable({
      stop: function(event, ui) {
          var order = $('.flex-grid').sortable('toArray');
