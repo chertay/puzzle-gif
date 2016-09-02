@@ -59,25 +59,25 @@ function ddInit(){
       sortedItems = items.slice().sort(sortNumber);
       //alert(items.toString() + '?=' + sortedItems.toString());
       if (items.toString() === sortedItems.toString()){
-        if(ga){
+        try{
           ga('send', {
             hitType: 'event',
             eventCategory: 'GameEngagement',
             eventAction: 'GameOutcome',
             eventLabel: 'win'
           });
-        }
+        } catch(e){}
         alert('You win');
       }
       if(attempts > 0 && attempts % 2 === 0){
-        if(ga){
+        try{
           ga('send', {
             hitType: 'event',
             eventCategory: 'GameEngagement',
             eventAction: 'GameAttempts',
             value: attempts
           });
-        }
+        } catch(e){}
       }
    }
 
