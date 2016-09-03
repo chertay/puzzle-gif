@@ -2,24 +2,21 @@
 ---
 body {
   background-image: url("s/background.jpg");
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: "Times", sans-serif;
 }
 
 header {
   padding: 10px;
 }
 
-header h1 {
-  text-shadow: 2px 2px #ffffff;
-  text-align: left;
-  font-size: 40px;
-  font-weight: 700;
+/*header h1 {
+  font-family: "Palatino Linotype", "Book Antiqua", serif;
+  font-size: 45px;
+  font-weight: 500;
   margin: 0;
-}
+}*/
 
-footer {
-  text-shadow: 2px 2px #ffffff;
-  text-align: center;
+div.instructions {
   font-size: 15px;
   font-weight: 700;
   margin: 0;
@@ -27,6 +24,12 @@ footer {
 
 * {
   box-sizing: border-box;
+}
+
+.tagline {
+  padding: 25px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .jumbotron {
@@ -52,6 +55,7 @@ footer {
 .btn.btn-primary:hover {
   color: #ffffff;
   background-color: #6e7f80;
+  padding: 10px;
   -webkit-transition: all .25s ease-in-out;
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
