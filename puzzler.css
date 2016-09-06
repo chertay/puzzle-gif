@@ -17,16 +17,16 @@ body {
 }
 
 .col {
-  background: #fff;
+  background: #ffffff;
   color: #000000;
   padding: 10px;
   margin: 1px;
-  display: flex;
+  /*display: flex;*/
   box-shadow: 5px 10px 10px 5px #808000;
   cursor: pointer;
 }
 
-.col > img {
+img {
     height: 200px;
     width: 200px;
 }
@@ -37,6 +37,7 @@ body {
 }
 
 .flex-grid .col {
+  display: flex;
   flex: 1
   flex-grow: 1;
   flex-basis: 0;
